@@ -5,11 +5,9 @@
 class LinkedList{
     private:
         Node* head;
-
     public:
         LinkedList();
         ~LinkedList();
-
         void add(Vehicle* item);
         void displayAll();
         void remove(int index);

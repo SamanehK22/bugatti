@@ -2,8 +2,6 @@
 #define NODE_H
 #include "Vehicle.h"
 
-#include "Vehicle.h"
-
 class Node{
     public:
         Vehicle* item;

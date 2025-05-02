@@ -1,33 +1,40 @@
 #include "storeSystem.h"
 #include <iostream>
 
-LinkedList::LinkedList() : head(nullptr) {}
+LinkedList::LinkedList() : head(nullptr){}
 
-LinkedList::~LinkedList() {
-    while (head != nullptr) {
+LinkedList::~LinkedList()
+{
+    while(head != nullptr)
+    {
         Node* temp = head;
         head = head->next;
         delete temp;
     }
 }
 
-void LinkedList::add(Vehicle* item) {
+void LinkedList::add(Vehicle* item)
+{
     Node* newNode = new Node(item);
-    if (!head) {
+    if(!head)
+    {
         head = newNode;
-    } else {
+    }else
+    {
         Node* temp = head;
-        while (temp->next) {
+        while(temp->next)
+        {
             temp = temp->next;
         }
         temp->next = newNode;
     }
 }
 
-void LinkedList::displayAll() {
+void LinkedList::displayAll()
+{
     Node* temp = head;
     int index = 0;
-    while (temp)
+    while(temp)
     {
         cout << "Item #" << index++ << ":\n";
         temp->item->display();
@@ -35,10 +42,12 @@ void LinkedList::displayAll() {
     }
 }
 
-void LinkedList::remove(int index) {
-    if (!head) return;
+void LinkedList::remove(int index)
+{
+    if(!head) return;
 
-    if (index == 0) {
+    if(index == 0)
+    {
         Node* temp = head;
         head = head->next;
         delete temp;
@@ -46,21 +55,25 @@ void LinkedList::remove(int index) {
     }
 
     Node* current = head;
-    for (int i = 0; current->next && i < index - 1; ++i) {
+    for(int i = 0; current->next && i < index - 1; ++i)
+    {
         current = current->next;
     }
 
-    if (current->next) {
+    if(current->next)
+    {
         Node* toDelete = current->next;
         current->next = current->next->next;
         delete toDelete;
     }
 }
 
-Vehicle* LinkedList::get(int index) {
+Vehicle* LinkedList::get(int index)
+{
     Node* current = head;
     int i = 0;
-    while (current) {
+    while (current)
+    {
         if (i == index) return current->item;
         current = current->next;
         i++;
@@ -68,7 +81,8 @@ Vehicle* LinkedList::get(int index) {
     return nullptr;
 }
 
-int LinkedList::size() const {
+int LinkedList::size() const
+{
     int count = 0;
     Node* current = head;
     while (current) {
